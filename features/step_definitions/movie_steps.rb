@@ -14,7 +14,11 @@ end
 Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
   #  ensure that that e1 occurs before e2.
   #  page.body is the entire content of the page as a string.
-  flunk "Unimplemented"
+  pos1=page.body.index(e1)
+  pos1=(pos1==nil) ? 0 : pos1
+  pos2=page.body.index(e2)
+  pos2=(pos2==nil) ? 0 : pos2
+  pos2.should>pos1
 end
 
 # Make it easier to express checking or unchecking several boxes at once
